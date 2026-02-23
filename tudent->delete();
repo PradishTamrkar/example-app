@@ -1,0 +1,9 @@
+[90m= [39m[34;4mApp\Models\Student[39;24m {#5959
+    [34mstudent_name[39m: "[32mTest[39m",
+    [34mstudent_email[39m: "[32mtest@test.com[39m",
+    [34mphone_no[39m: "[32m123[39m",
+    [34mupdated_at[39m: "[32m2026-02-19 05:11:31[39m",
+    [34mcreated_at[39m: "[32m2026-02-19 05:11:31[39m",
+    [34mstudent_id[39m: [35m11[39m,
+  }
+
