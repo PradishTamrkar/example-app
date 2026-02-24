@@ -1,14 +1,12 @@
 import { createRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
 import { StrictMode } from 'react'
-import { InertiaProgress } from '@inertiajs/progress'
-
-import './index.css'
-
-InertiaProgress.init()
 
 createInertiaApp({
-  resolve: name => import(`./Pages/${name}`),
+  resolve: name => {
+    const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
+    return pages[`./Pages/${name}.jsx`]
+  },
   setup({ el, App, props }) {
     createRoot(el).render(
       <StrictMode>

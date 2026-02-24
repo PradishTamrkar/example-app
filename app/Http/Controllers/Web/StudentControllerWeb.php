@@ -66,7 +66,7 @@ class StudentControllerWeb extends Controller
                 ->with('failed','failed to fetch the student details');
         }
 
-         return Inertia::render('Student/Show',[
+         return Inertia::render('Students/Show',[
             'student'=>$student,
          ]);
     }

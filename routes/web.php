@@ -29,7 +29,7 @@ Route::post('/students', [StudentControllerWeb::class , 'store'])
     ->name('students.store');
 
 Route::put('/students/{id}', [StudentControllerWeb::class , 'update'])
-    ->name('student.update');
+    ->name('students.update');
 
 Route::delete('/students/{id}', [StudentControllerWeb::class , 'destory'])
-    ->name('student.destroy');
+    ->name('students.destroy');

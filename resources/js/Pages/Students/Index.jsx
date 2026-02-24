@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Inertia } from '@inertiajs/react'
 
-export default function Index({ students, flash }) {
+export default function Index({ students }) {
     const [form, setForm] = useState({ student_name:'', student_email:'', phone_no:'' })
     const [editId, setEditId] = useState(null)
 
@@ -40,10 +40,6 @@ export default function Index({ students, flash }) {
     return (
         <div>
             <h1>Student List</h1>
-
-            {flash.success && <div style={{color:'green'}}>{flash.success}</div>}
-            {flash.failed && <div style={{color:'red'}}>{flash.failed}</div>}
-
             <form onSubmit={handleSubmit} style={{marginBottom:'20px'}}>
                 <input value={form.student_name} onChange={e=>setForm({...form, student_name:e.target.value})} placeholder='NAME' />
                 <input value={form.student_email} onChange={e=>setForm({...form, student_email:e.target.value})} placeholder='EMAIL' />
