@@ -15,12 +15,15 @@ class StudentControllerWeb extends Controller
      */
     public function index(Request $request)
     {
-        $students = Student::when($request->student_name, function($q) use($request) {
-            $q->where('student_name','like','%'.$request->student_name.'%');
-        })->simplePaginate(10);
+        $students = Student::when($request->search, function($q) use($request) {
+            $q->where('student_name','like','%'.$request->search.'%')
+              ->orWhere('student_email','like','%'.$request->search.'%')
+              ->orWhere('phone_no','like','%'.$request->search.'%');
+        })->paginate(10);
 
         return Inertia::render('Students/Index', [
-            'students'=>$students
+            'students'=>$students, //sending student data as props
+            'search'=>$request->search ?? ''
         ]);
     }
 
@@ -37,7 +40,6 @@ class StudentControllerWeb extends Controller
             ]
         );
         try{
-
             $student = new Student();
             $student -> student_name = $validated['student_name'];
             $student -> student_email = $validated['student_email'];
@@ -76,7 +78,6 @@ class StudentControllerWeb extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validated = $request->validate([
                 'student_name'=>'required|string|max:255',
                 'student_email'=>'required|string|max:255',
