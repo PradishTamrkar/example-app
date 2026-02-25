@@ -57,19 +57,19 @@ class StudentControllerWeb extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
-    {
-        $student = Student::find($id);
+    // public function show(int $id)
+    // {
+    //     $student = Student::find($id);
 
-        if(!$student){
-             return redirect()->route('students.index')
-                ->with('failed','failed to fetch the student details');
-        }
+    //     if(!$student){
+    //          return redirect()->route('students.index')
+    //             ->with('failed','failed to fetch the student details');
+    //     }
 
-         return Inertia::render('Students/Show',[
-            'student'=>$student,
-         ]);
-    }
+    //      return Inertia::render('Students/Show',[
+    //         'student'=>$student,
+    //      ]);
+    // }
 
     /**
      * Update the specified resource in storage.

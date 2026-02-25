@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Inertia } from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 
 export default function Index({ students }) {
     const [form, setForm] = useState({ student_name:'', student_email:'', phone_no:'' })
@@ -9,14 +9,14 @@ export default function Index({ students }) {
         e.preventDefault()
 
         if(editId){
-            Inertia.put(route('students.update', editId), form, {
+            router.put(route('students.update', editId), form, {
                 onSuccess: () => {
                     setForm({ student_name:'', student_email:'', phone_no:'' })
                     setEditId(null)
                 }
             })
         } else {
-            Inertia.post(route('students.store'), form, {
+            router.post(route('students.store'), form, {
                 onSuccess: () => setForm({ student_name:'', student_email:'', phone_no:'' })
             })
         }
@@ -33,7 +33,7 @@ export default function Index({ students }) {
 
     const handleDelete = (id) => {
         if(confirm('Are you sure?')) {
-            Inertia.delete(route('students.destroy', id))
+            router.delete(route('students.destroy', id))
         }
     }
 
@@ -72,8 +72,8 @@ export default function Index({ students }) {
             </table>
 
             <div style={{marginTop:'10px'}}>
-                {students.prev_page_url && <button onClick={() => Inertia.visit(students.prev_page_url)}>Prev</button>}
-                {students.next_page_url && <button onClick={() => Inertia.visit(students.next_page_url)}>Next</button>}
+                {students.prev_page_url && <button onClick={() => router.visit(students.prev_page_url)}>Prev</button>}
+                {students.next_page_url && <button onClick={() => router.visit(students.next_page_url)}>Next</button>}
             </div>
         </div>
     )

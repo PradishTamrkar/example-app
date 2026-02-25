@@ -31,5 +31,5 @@ Route::post('/students', [StudentControllerWeb::class , 'store'])
 Route::put('/students/{id}', [StudentControllerWeb::class , 'update'])
     ->name('students.update');
 
-Route::delete('/students/{id}', [StudentControllerWeb::class , 'destory'])
+Route::delete('/students/{id}', [StudentControllerWeb::class , 'destroy'])
     ->name('students.destroy');
